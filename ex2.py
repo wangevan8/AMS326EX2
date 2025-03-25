@@ -85,7 +85,7 @@ C_naive, naive_flops = naive_method(A, B)
 naive_time = time.time() - start_time
 print(f"Time: {naive_time:.4f} seconds")
 print(f"Floating-point operations: {naive_flops}")
-
+# Strassen method
 print("Strassen Method Matrix Multiplication:")
 start_time = time.time()
 C_strassen, strassen_flops = strassen_method(A, B)
