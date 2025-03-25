@@ -22,7 +22,7 @@ def naive_method(A, B):
                 flops += 2 
     
     return C, flops
-
+# Code modified from GeeksforGeeks
 def strassen_method(A, B):
     n = A.shape[0]
     # Base case for 2x2
