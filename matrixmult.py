@@ -3,12 +3,32 @@ import random
 import time
 
 def generate_matrices(n):
+    """
+    Generates two random n x n matrices with values uniformly sampled from [-2, 2].
+
+    Parameters:
+    n (int): The size of the square matrices to generate.
+
+    Returns:
+    tuple: A tuple (A, B) where A and B are numpy arrays of shape (n, n).
+    """
     np.random.seed(10)  # Set seed in order to ensure reproducibility
     A = np.random.uniform(-2, 2, (n, n))
     B = np.random.uniform(-2, 2, (n, n))
     return A, B
 
 def naive_method(A, B):
+    """
+    Performs matrix multiplication using the naive triple-loop method.
+    Also counts floating-point operations (FLOPs), assuming each multiply-add is 2 FLOPs.
+
+    Parameters:
+    A (ndarray): Left matrix of shape (n, n).
+    B (ndarray): Right matrix of shape (n, n).
+
+    Returns:
+    tuple: A tuple (C, flops) where C is the result matrix and flops is the count of floating-point operations.
+    """
     n = A.shape[0]
     C = np.zeros((n, n))
     
@@ -22,8 +42,20 @@ def naive_method(A, B):
                 flops += 2 
     
     return C, flops
-# Code modified from GeeksforGeeks
+
 def strassen_method(A, B):
+    """
+    Performs matrix multiplication using Strassen's recursive algorithm.
+    Reduces the multiplication complexity to approximately O(n^2.81).
+    Also counts floating-point operations (FLOPs).
+
+    Parameters:
+    A (ndarray): Left matrix of shape (n, n), where n is a power of 2.
+    B (ndarray): Right matrix of shape (n, n), where n is a power of 2.
+
+    Returns:
+    tuple: A tuple (C, flops) where C is the result matrix and flops is the count of floating-point operations.
+    """
     n = A.shape[0]
     # Base case for 2x2
     if n <= 2:
